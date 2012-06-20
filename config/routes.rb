@@ -1,7 +1,31 @@
 MailerApp::Application.routes.draw do
-  resources :users
+ 
+  root :to => "static_pages#home"
 
-  root :to => "users#index"
+  #----------------------------------------------
+  # STATIC PAGES
+  #----------------------------------------------
+
+  match '/home', to: 'static_pages#home'
+  match '/about', to: 'static_pages#about'
+  match '/contacts', to: 'static_pages#contacts'
+
+  #----------------------------------------------
+  # SESSION, USERS AND SIGN IN
+  #----------------------------------------------
+
+  resources :users
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/signin', to: 'sessions#new'
+  match '/signup', to: 'users#new'
+  match '/signout', to: 'sessions#destroy', :via => :delete
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,7 +75,7 @@ MailerApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # root /:to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

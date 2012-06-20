@@ -1,4 +1,5 @@
-<h1>Listing users</h1>
+<% provide :title, "Users" %>
+<h1>Users</h1>
 
 <table>
   <tr>
@@ -25,3 +26,9 @@
 <br />
 
 <%= link_to 'New User', new_user_path %>
+<%= link_to "Sign out", signout_path, :method => :delete %>
+<%= link_to "Sign in", signin_path %>
+
+<% if current_user %>
+<br><%= "The current user is: #{current_user.username}" %>
+<% end %>
