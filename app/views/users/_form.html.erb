@@ -1,3 +1,7 @@
+<% provide :title, 'Sign up' %>
+
+<h1> Sign up </h1>
+
 <%= form_for(@user, :remote => true) do |f| %>
 
   <% if @user.errors.any? %>

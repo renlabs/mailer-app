@@ -14,20 +14,25 @@ describe User do
 
 	it { should be_valid }
 
+
+#-------------------------------------------------------------------------
+# Username
+#-------------------------------------------------------------------------
+
 	describe "when username is not present" do
 		before { @user.username = "" }
 		it { should_not be_valid }
 	end
 
-	describe "when email is not present" do
-		before { @user.email = "" }
+	describe "when username is too long" do
+		before { @user.username = "a" * 51 }
 		it { should_not be_valid }
 	end
 
-	describe "when password is not present" do
-		before { @user.password = @user.password_confirmation = "" }
-		it { should_not be_valid }
-	end
+
+#-------------------------------------------------------------------------
+# Password
+#-------------------------------------------------------------------------
 
 	describe "when password does not match" do
 		before { @user.password_confirmation = "mismatch" }
@@ -39,8 +44,19 @@ describe User do
 		it { should_not be_valid }
 	end
 
-	describe "when username is too long" do
-		before { @user.username = "a" * 51 }
+	describe "when password is not present" do
+		before { @user.password = @user.password_confirmation = "" }
+		it { should_not be_valid }
+	end
+
+
+
+#-------------------------------------------------------------------------
+# Email
+#-------------------------------------------------------------------------
+		
+	describe "when email is not present" do
+		before { @user.email = "" }
 		it { should_not be_valid }
 	end
 
