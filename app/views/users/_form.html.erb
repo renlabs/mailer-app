@@ -1,39 +1,24 @@
 <% provide :title, 'Sign up' %>
 
-<h1> Sign up </h1>
+<%= render partial: "shared/error_messages" %>
 
-<%= form_for(@user, :remote => true) do |f| %>
+<div class= "well">
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <%= form_for @user, url: users_path do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br />
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= f.label :email %>
+    <%= f.text_field :email %><br />
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br />
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br />
+
+    <%= f.submit "Create account" %>
+    
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-    <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+</div>
