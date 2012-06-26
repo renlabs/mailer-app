@@ -37,8 +37,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #UserMailer.welcome_email(@user).deliver
+        format.html{ redirect_to user_path(@user) } 
         sign_in @user
-        redirect_to users_path
+        flash[:success] =  "Welcome to the mailer app"
       else
         format.html { render "new" }
       end
