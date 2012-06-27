@@ -11,11 +11,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
   end
 
   def new
@@ -37,9 +32,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #UserMailer.welcome_email(@user).deliver
-        format.html{ redirect_to user_path(@user) } 
         sign_in @user
         flash[:success] =  "Welcome to the mailer app"
+        format.html{ redirect_to user_path(@user) } 
       else
         format.html { render "new" }
       end

@@ -28,6 +28,7 @@ end
 group :test do
 	gem 'factory_girl_rails'
 	gem 'capybara'
+	gem "cucumber", "~> 1.2.1"
 end
 
 gem 'jquery-rails'

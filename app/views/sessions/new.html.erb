@@ -2,9 +2,6 @@
 <h1> Sign in </h1>
 	<div class = "row" >
 		<div class ="span4">
-			<div class= "alert alert-error" id="errors">
-				<%= flash[:error] %>
-			</div>
 
 			<%= form_for(:session, :url => sessions_path) do |s|%>
 				
