@@ -28,7 +28,9 @@ end
 group :test do
 	gem 'factory_girl_rails'
 	gem 'capybara'
-	gem "cucumber", "~> 1.2.1"
+	gem "cucumber-rails", require: false
+	gem 'turnip'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
